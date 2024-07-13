@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'com.darana'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    seleniumJavaVersion = '4.21.0'
+    logbackVersion = '1.4.14'
+    webdriverManagerVersion = '5.6.3'
+    testngVersion = '7.9.0'
+    jacksonVersion = '2.16.1'
+    mavenCompilerVersion = '3.11.0'
+    mavenDependencyVersion = '3.6.0'
+    mavenJarVersion = '3.3.0'
+    mavenSurefireVersion = '3.1.2'
+    mavenResourcesPluginVersion = '3.3.1'
+    lombokVersion = '1.18.24'
+    packageDirectory = "$buildDir/docker-resources"
+}
+
+dependencies {
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumJavaVersion}"
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    implementation 'org.projectlombok:lombok:1.18.20'
+    testImplementation "io.github.bonigarcia:webdrivermanager:${webdriverManagerVersion}"
+    testImplementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    testImplementation "org.testng:testng:${testngVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
+}
+
+test {
+    useTestNG()
+}
